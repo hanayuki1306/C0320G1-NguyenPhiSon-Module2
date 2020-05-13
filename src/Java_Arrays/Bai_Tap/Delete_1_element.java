@@ -39,7 +39,7 @@ public class Delete_1_element {
 
         System.out.println("This is arr after delete:");
         for (int e : arr_res) {
-            System.out.println(e);
+            System.out.print(e + "\t");
         }
     }
 
@@ -47,13 +47,13 @@ public class Delete_1_element {
     // xoa 4
 
     public static int[] delete_element(int[] arr, int variable_delete) {
+
         int arr_result[] = new int[arr.length - 1];
         boolean check = false;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == variable_delete) {
                 check = true;
             }
-            ;
         }
 
         if (check) {

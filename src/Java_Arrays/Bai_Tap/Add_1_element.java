@@ -29,16 +29,17 @@ public class Add_1_element {
         for (int j = 0; j < arr.length; j++) {
             System.out.print(arr[j] + "\t");
         }
-
+        System.out.println("\n");
         System.out.println("input X is variable you need push");
         int X = scanner.nextInt();
         System.out.println("pls input the indexof X you want push");
         int indexOf = scanner.nextInt();
-        arr_return(arr,X,indexOf);
 
+
+        int arr_res[] = arr_return(arr,X,indexOf);
 
         System.out.println("This is arr after push:");
-        for (int e: arr){
+        for (int e: arr_res){
             System.out.println(e);
         }
     }
@@ -46,15 +47,20 @@ public class Add_1_element {
     // [1,3,4,6] chen 10 vao vi tri thu 3
 //    [1,3,10,4,6]
     public static int[] arr_return(int [] arr, int X, int indexofX){
+        int arr_result[] = new int[arr.length+1];
         if (indexofX <=1 || indexofX > arr.length-1){
             System.out.println("Cant input X cause index have problem");
-        } else {
-            for (int i=indexofX;i <arr.length;i++){
-                    arr[indexofX-1] = X;
+        }else{
+
+            for(int i=0;i<indexofX-1;i++){
+                arr_result[i] = arr[i];
             }
-            arr[indexofX] = arr[indexofX+1];
-            return arr;
+            arr_result[indexofX-1]= X;
+
+            for(int i=indexofX;i<arr_result.length;i++){
+                arr_result[i]= arr[i-1];
+            }
         }
-        return arr;
+        return arr_result;
     }
 }

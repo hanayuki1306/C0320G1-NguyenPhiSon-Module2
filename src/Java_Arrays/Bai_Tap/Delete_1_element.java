@@ -15,7 +15,7 @@ public class Delete_1_element {
             if (size_of_arr > 50) {
                 System.out.println("size too large");
             }
-        } while (size_of_arr>50);
+        } while (size_of_arr > 50);
 
         arr = new int[size_of_arr];
         int i = 0;
@@ -35,10 +35,10 @@ public class Delete_1_element {
         int element_delete = scanner.nextInt();
 
 
-        int arr_res[] = delete_element(arr,element_delete);
+        int arr_res[] = delete_element(arr, element_delete);
 
         System.out.println("This is arr after delete:");
-        for (int e: arr_res){
+        for (int e : arr_res) {
             System.out.println(e);
         }
     }
@@ -46,28 +46,30 @@ public class Delete_1_element {
     // [1,2,3,4,5,6,7]
     // xoa 4
 
-    public static int[] delete_element(int [] arr, int variable_delete) {
+    public static int[] delete_element(int[] arr, int variable_delete) {
         int arr_result[] = new int[arr.length - 1];
         boolean check = false;
-        for (int i=0; i<arr.length;i++){
-            if( arr[i]== variable_delete ){
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == variable_delete) {
                 check = true;
-            };
+            }
+            ;
         }
 
-        if (check){
-            for (int i=0;i<arr.length;i++){
-                if (arr[i] == variable_delete){
-                    int index_delete= i;
-                    for (int j=0; j<index_delete;j++){
-                        arr_result[j]= arr[j];
+        if (check) {
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] == variable_delete) {
+                    int index_delete = i;
+                    for (int j = 0; j < index_delete; j++) {
+                        arr_result[j] = arr[j];
                     }
-                    for (int value_ater_variable_del = index_delete;value_ater_variable_del<arr_result.length;value_ater_variable_del++ ){
-                        arr_result[value_ater_variable_del] = arr[value_ater_variable_del+1];
-                    };
+                    for (int value_ater_variable_del = index_delete; value_ater_variable_del < arr_result.length; value_ater_variable_del++) {
+                        arr_result[value_ater_variable_del] = arr[value_ater_variable_del + 1];
+                    }
+                    ;
                 }
             }
-            return  arr_result;
+            return arr_result;
         } else {
             System.out.println("Khong tim thay phan tu muon xoa trong mang");
             System.exit(0);
@@ -75,4 +77,15 @@ public class Delete_1_element {
         return arr_result;
 
     }
+
+//    public static boolean check_element(int[] arr, int variable) {
+//        boolean check = false;
+//        for (int i = 0; i < arr.length; i++) {
+//            if (arr[i] == variable) {
+//                check = true;
+//            }
+//            ;
+//        }
+//        return check;
+//    }
 }

@@ -4,16 +4,20 @@ import java.util.*;
 public class Test1 {
 
     public static void main(String[] args) {
-    method1(23.00f);
+        int a = 0 ;
+
+
+        int[] a1 = {2,3,4,5};
+        String[] test = new String[5];
+//        System.out.println(a);
+//        System.out.println(a1);
+//        System.out.println(a1[0]);
+//        a1[0]= 15;
+//        System.out.println(a1[0]);
+//        System.out.println(a1);
+        System.out.println(test);
+        System.out.println(test[0]);
     }
-
-    static void method1(int a){  }
-
-    static void method1(float a){  }
-
-//    static void method1(int c){  }
-
-    static void method1(double d){  }
 
 }
 

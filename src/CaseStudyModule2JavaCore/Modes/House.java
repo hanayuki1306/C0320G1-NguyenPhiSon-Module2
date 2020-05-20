@@ -1,7 +1,7 @@
-package todo_CaseStudy.Services.House;
+package CaseStudyModule2JavaCore.Modes;
 
-import todo_CaseStudy.Services.TypeHouse;
 import todo_CaseStudy.Services.Services;
+import todo_CaseStudy.Services.TypeHouse;
 
 public class House extends Services {
 

@@ -1,23 +1,46 @@
 package Test_java;
+//import SimponCharacter.SimpsonCharacter;
+
 import java.util.*;
 
 public class Test1 {
 
-    public static void main(String[] args) {
-        int a = 0 ;
+    public static void main(String... args) {
+        List a = new ArrayList();
+        int a1[] = {1};
+        int a2[] = {2};
+        int a3[] = {3};
+        a.add(0,a1);
+        a.add(1,a2);
+
+        for (Object element: a){
+            System.out.println(element);
+//            System.out.println(a1[0]);
+        }
 
 
-        int[] a1 = {2,3,4,5};
-        String[] test = new String[5];
-//        System.out.println(a);
-//        System.out.println(a1);
-//        System.out.println(a1[0]);
-//        a1[0]= 15;
-//        System.out.println(a1[0]);
-//        System.out.println(a1);
-        System.out.println(test);
-        System.out.println(test[0]);
+//        List<SimpsonCharacter> characters = new ArrayList<>();
+//
+//        SimpsonCharacter homer = new SimpsonCharacter("Homer") {
+//            @Override
+//            public int compareTo(SimpsonCharacter simpson) {
+//                return this.name.length() - (simpson.name.length());
+//            }
+//        };
+//
+//        SimpsonCharacter moe = new SimpsonCharacter("Moe") {
+//            @Override
+//            public int compareTo(SimpsonCharacter simpson) {
+//                return this.name.length() - (simpson.name.length());
+//            }
+//        };
+//
+//        characters.add(homer);
+//        characters.add(moe);
+//
+//        Collections.sort(characters);
+//
+//        System.out.println(characters);
     }
 
 }
-

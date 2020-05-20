@@ -1,8 +1,8 @@
-package todo_CaseStudy.Services;
+package CaseStudyModule2JavaCore.Modes;
 
-public abstract class  Services {
-    String id;
-    String nameServices;
+public abstract class Services {
+    private String id;
+    private String nameServices;
     double arena_use;
     double costOfUse;
     short max_people;
@@ -61,9 +61,7 @@ public abstract class  Services {
 
 
     public abstract void showInfo();
-//        System.out.println("Name or Services "+ nameServices);
-//        System.out.println("Arena_use "+ arena_use);
-//        System.out.println("CostOfUse " +costOfUse);
-//        System.out.println("TypeUse " + typeUse);
+
+
 
 }

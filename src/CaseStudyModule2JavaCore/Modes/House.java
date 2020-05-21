@@ -1,26 +1,63 @@
 package CaseStudyModule2JavaCore.Modes;
 
-import todo_CaseStudy.Services.Services;
-import todo_CaseStudy.Services.TypeHouse;
 
 public class House extends Services {
 
-//    int Low = 1;
-//    int Normal = 2;
-//    int Good = 3;
     TypeHouse typeHousee;
     public House() {
     }
 
+    private String convenientDescription;
+    private int numberOfFloors;
 
 
     String address_house;
 
     //Type house GOOD va NORMAL  then adress, arenause
-    public House(TypeHouse typeHouse, String address_house, double arena_use) {
-        super.setArena_use(arena_use);
+
+    public House(String id, String nameService, double arenaUse, double rentalCosts, int maxPeople, String typeRent, TypeHouse typeHousee, String convenientDescription, int numberOfFloors, String address_house) {
+
+        super(id, nameService, arenaUse, rentalCosts, maxPeople, typeRent);
+        this.typeHousee = typeHousee;
+        this.convenientDescription = convenientDescription;
+        this.numberOfFloors = numberOfFloors;
         this.address_house = address_house;
-        typeHousee = typeHouse;
+    }
+
+    public TypeHouse getTypeHousee() {
+        return typeHousee;
+    }
+
+    public void setTypeHousee(String typeHousee) {
+        if (typeHousee == "GOOD"){
+            this.typeHousee = TypeHouse.GOOD;
+        } else if (typeHousee == "NORMAL"){
+            this.typeHousee = TypeHouse.NORMAL;
+        }
+    }
+
+    public String getConvenientDescription() {
+        return convenientDescription;
+    }
+
+    public void setConvenientDescription(String convenientDescription) {
+        this.convenientDescription = convenientDescription;
+    }
+
+    public int getNumberOfFloors() {
+        return numberOfFloors;
+    }
+
+    public void setNumberOfFloors(int numberOfFloors) {
+        this.numberOfFloors = numberOfFloors;
+    }
+
+    public String getAddress_house() {
+        return address_house;
+    }
+
+    public void setAddress_house(String address_house) {
+        this.address_house = address_house;
     }
 
     @Override
@@ -34,11 +71,13 @@ public class House extends Services {
 
     }
 
-
-
-    public static void main(String[] args) {
-        House house = new House();
-        house.showInfo();
-
+    @Override
+    public String toString() {
+        return "House{" +
+                "typeHousee=" + typeHousee +
+                ", convenientDescription='" + convenientDescription + '\'' +
+                ", numberOfFloors=" + numberOfFloors +
+                ", address_house='" + address_house + '\'' +
+                '}';
     }
 }

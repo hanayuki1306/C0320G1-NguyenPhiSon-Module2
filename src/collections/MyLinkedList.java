@@ -23,6 +23,8 @@ public class MyLinkedList {
         Node pointer = head;
         for (int i = 0; i < size - 1; i++) {
             pointer = pointer.next;
+            System.out.println("pointer " + pointer);
+//            System.out.println();
         }
 
         Node newNode = new Node(data);

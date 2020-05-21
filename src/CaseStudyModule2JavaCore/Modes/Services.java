@@ -3,12 +3,27 @@ package CaseStudyModule2JavaCore.Modes;
 public abstract class Services {
     private String id;
     private String nameServices;
-    double arena_use;
+    double arenaUse;
     double costOfUse;
-    short max_people;
+    int maxPeople;
     double typeUse;
+    double rentalCosts;
+    String typeRent;
     // type use include (year, month, day, hour)
 
+    public Services(){
+
+    };
+
+    public Services(String id, String nameService, double arenaUse, double rentalCosts, int maxPeople, String typeRent) {
+        this.id = id;
+        this.nameServices = nameService;
+        this.arenaUse = arenaUse;
+        this.rentalCosts = rentalCosts;
+        this.maxPeople = maxPeople;
+        this.typeRent = typeRent;
+    }
+    
 
     public String getId() {
         return id;
@@ -27,11 +42,11 @@ public abstract class Services {
     }
 
     public double getArena_use() {
-        return arena_use;
+        return arenaUse;
     }
 
     public void setArena_use(double arena_use) {
-        this.arena_use = arena_use;
+        this.arenaUse = arena_use;
     }
 
     public double getCostOfUse() {
@@ -42,12 +57,12 @@ public abstract class Services {
         this.costOfUse = costOfUse;
     }
 
-    public short getMax_people() {
-        return max_people;
+    public int getMax_people() {
+        return maxPeople;
     }
 
     public void setMax_people(short max_people) {
-        this.max_people = max_people;
+        this.maxPeople = max_people;
     }
 
     public double getTypeUse() {

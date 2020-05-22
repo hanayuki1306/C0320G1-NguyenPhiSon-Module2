@@ -57,18 +57,17 @@ public class MainController {
         System.out.println("8. Exit");
         System.out.println("-----------");
         int inputShowService = Integer.parseInt(scanner.nextLine());
-
+        Add_new_services new_services = new Add_new_services();
         switch (inputShowService){
             case 1:
-                Add_new_services.checkinput(1);
-                Add_new_services new_services = new Add_new_services();
-                new_services.showInfomationService();
+
+                new_services.showInfoServiceVilla();
                 break;
             case 2:
-                Add_new_services.checkinput(2);
+                new_services.showInfoServiceHouse();
                 break;
             case 3:
-                Add_new_services.checkinput(3);
+                new_services.showInfoServiceRoom();
                 break;
             case 4:
                 break;

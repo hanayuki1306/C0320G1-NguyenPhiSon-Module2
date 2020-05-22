@@ -13,24 +13,24 @@ public class Add_new_services<T> {
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
     private static final String HEADER = "String id, String nameService, double arenaUse, double rentalCosts, int maxPeople, String typeRent, String roomStandard, String convenientDescription, double areaPool, int numberOfFloors, CaseStudyModule2JavaCore.Modes.TypeVilla typeVilla\n";
-
-    private static String root_links;
-    public static String checkinput(int number){
-        switch (number){
-            case 1:
-                root_links = filenameVilla;
-                break;
-            case 2:
-                root_links = filenameHouse;
-                break;
-            case 3:
-                root_links = filenameRoom;
-                break;
-            default:
-                System.out.println("Don`t know root link of file csv ");
-        }
-        return root_links;
-    }
+//
+//    private static String root_links;
+//    public static String checkinput(int number){
+//        switch (number){
+//            case 1:
+//                root_links = filenameVilla;
+//                break;
+//            case 2:
+//                root_links = filenameHouse;
+//                break;
+//            case 3:
+//                root_links = filenameRoom;
+//                break;
+//            default:
+//                System.out.println("Don`t know root link of file csv ");
+//        }
+//        return root_links;
+//    }
 
 
     public static void WriteVillaToCSV(ArrayList<Villa>  ListVilla){
@@ -86,7 +86,7 @@ public class Add_new_services<T> {
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(filenameHouse,true);
-            fileWriter.append(HEADER);
+//            fileWriter.append(HEADER);
             //fileWriter.append(NEW_LINE_SEPARATOR);
             for (House house: ListHouse){
                 fileWriter.append(house.getId());
@@ -131,8 +131,8 @@ public class Add_new_services<T> {
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(filenameRoom,true);
-            fileWriter.append(HEADER);
-            fileWriter.append(NEW_LINE_SEPARATOR);
+//            fileWriter.append(HEADER);
+//            fileWriter.append(NEW_LINE_SEPARATOR);
             for (Room room: ListRoom){
                 fileWriter.append(room.getId());
                 fileWriter.append(COMMA_DELIMITER);
@@ -187,6 +187,7 @@ public class Add_new_services<T> {
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(filenameHouse);
+            fileWriter.append(HEADER);
             System.out.println("Remove House Completed\n");
         } catch (Exception ex){
             System.out.println("Error, in FileWriter, file not found!!!");
@@ -203,6 +204,7 @@ public class Add_new_services<T> {
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(filenameRoom);
+            fileWriter.append(HEADER);
             System.out.println("Remove Room Completed\n");
         } catch (Exception ex){
             System.out.println("Error, in FileWriter, file not found!!!");
@@ -217,7 +219,7 @@ public class Add_new_services<T> {
     }
 
 
-    public ArrayList<Villa> getFileCSVtoList(){
+    public ArrayList<Villa> getFileCsvVillaToList(){
         BufferedReader br = null;
         ArrayList<Villa> VillaList = new ArrayList<Villa>();
         try {
@@ -226,7 +228,6 @@ public class Add_new_services<T> {
 
             while ((line = br.readLine()) != null){
                 String[] splitData = line.split(",");
-//                System.out.println("gia tri cua split data 0" + splitData[0]);
                 if (splitData[0].equals("String id")){
                     continue;
                 }
@@ -245,7 +246,7 @@ public class Add_new_services<T> {
 
                 VillaList.add(villa);
             }
-            System.out.println("done ");
+            System.out.println("done Villa ....\n");
 
 
         } catch (Exception e) {
@@ -258,12 +259,14 @@ public class Add_new_services<T> {
             }
         }
         return VillaList;
-
     }
-    ArrayList<Villa> ListVillaCsv  = getFileCSVtoList();
-//    ArrayList<House>  ListHouse = getFileCSVtoList();
-//    ArrayList<Room> ListRoom  = getFileCSVtoList();
-    public void showInfomationService() {
+
+
+
+    ArrayList<Villa> ListVillaCsv  = getFileCsvVillaToList();
+
+
+    public void showInfoServiceVilla() {
 
          for (Villa villa: ListVillaCsv){
              System.out.println("---------------------------\n");
@@ -282,4 +285,117 @@ public class Add_new_services<T> {
         }
     }
 
+    public ArrayList<House> getFileCsvHouseToList(){
+            BufferedReader br = null;
+            ArrayList<House> HouseList = new ArrayList<>();
+            try {
+                String line;
+                br = new BufferedReader(new FileReader(filenameHouse));
+
+                while ((line = br.readLine()) != null){
+                    String[] splitData = line.split(",");
+                    if (splitData[0].equals("String id")){
+                        continue;
+                    }
+                    House house = new House();
+                    house.setId(splitData[0]);
+                    house.setNameServices(splitData[1]);
+                    house.setArenaUse(Double.parseDouble(splitData[2]));
+                    house.setRentalCosts(Double.parseDouble(splitData[3]));
+                    house.setMaxPeople(Integer.parseInt(splitData[4]));
+                    house.setTypeRent(splitData[5]);
+                    house.setTypeHousee(splitData[6]);
+                    house.setConvenientDescription(splitData[7]);
+                    house.setNumberOfFloors(Integer.parseInt(splitData[8]));
+                    house.setAddress_house(splitData[9]);
+
+                    HouseList.add(house);
+                }
+                System.out.println("done House ...\n ");
+
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            } finally {
+                try {
+                    br.close();
+                } catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+            }
+            return HouseList;
+        }
+
+    public void showInfoServiceHouse() {
+        ArrayList<House>  ListHouse = getFileCsvHouseToList();
+        for (House house: ListHouse){
+            System.out.println("---------------------------\n");
+            System.out.println("String id = " + house.getId() +
+                    ", NameService" + house.getNameServices() +
+                    ", areaUse "+ house.getArena_use()+
+                    ", RentalCosts " + house.getRentalCosts()+
+                    ", Max people " + house.getMaxPeople() +
+                    ", Type rent " + house.getTypeRent() +
+                    ", Type House" + house.getTypeHousee() +
+                    ", ConvenientDescription " + house.getConvenientDescription()+
+                    ", Number Of Floor " + house.getNumberOfFloors() +
+                    ", Address House " + house.getAddress_house());
+            System.out.println("----------------------");
+        }
+    }
+
+    ArrayList<Room> ListRoom  = getFileCsvRoomToList();
+    public ArrayList<Room> getFileCsvRoomToList(){
+        BufferedReader br = null;
+        ArrayList<Room> RoomList = new ArrayList<Room>();
+        try {
+            String line;
+            br = new BufferedReader(new FileReader(filenameRoom));
+
+            while ((line = br.readLine()) != null){
+                String[] splitData = line.split(",");
+                if (splitData[0].equals("String id")){
+                    continue;
+                }
+                Room room = new Room();
+                room.setId(splitData[0]);
+                room.setNameServices(splitData[1]);
+                room.setArenaUse(Double.parseDouble(splitData[2]));
+                room.setRentalCosts(Double.parseDouble(splitData[3]));
+                room.setMaxPeople(Integer.parseInt(splitData[4]));
+                room.setTypeRent(splitData[5]);
+                room.setNumberOfRoom(Integer.parseInt(splitData[6]));
+
+                RoomList.add(room);
+            }
+            System.out.println("done Room ... ");
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                br.close();
+            } catch (Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
+        return RoomList;
+    }
+    public void showInfoServiceRoom() {
+
+        for (Room room: ListRoom){
+            System.out.println("---------------------------\n");
+            System.out.println("String id = " + room.getId() +
+                    ", NameService" + room.getNameServices() +
+                    ", areaUse "+ room.getArena_use()+
+                    ", RentalCosts " + room.getRentalCosts()+
+                    ", Max people " + room.getMaxPeople() +
+                    ", Type rent " + room.getTypeRent() +
+                    ", NumberOfRoom " + room.getNumberOfRoom());
+            System.out.println("----------------------");
+        }
+    }
+
 }
+

@@ -13,7 +13,7 @@ public class House extends Services {
 
     String address_house;
 
-    //Type house GOOD va NORMAL  then adress, arenause
+
 
     public House(String id, String nameService, double arenaUse, double rentalCosts, int maxPeople, String typeRent, TypeHouse typeHousee, String convenientDescription, int numberOfFloors, String address_house) {
 
@@ -25,15 +25,15 @@ public class House extends Services {
     }
 
     public String getTypeHousee() {
-        if ( typeHousee == TypeHouse.GOOD){
+        if ( typeHousee.equals(typeHousee.GOOD)){
             return "GOOD";
         } else return "NORMAL";
     }
 
     public void setTypeHousee(String typeHousee) {
-        if (typeHousee == "GOOD"){
+        if (typeHousee.equals("GOOD")){
             this.typeHousee = TypeHouse.GOOD;
-        } else if (typeHousee == "NORMAL"){
+        } else {
             this.typeHousee = TypeHouse.NORMAL;
         }
     }

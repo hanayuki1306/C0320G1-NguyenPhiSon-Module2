@@ -1,0 +1,3 @@
+String id, String nameService, double arenaUse, double rentalCosts, int maxPeople, String typeRent, String roomStandard, String convenientDescription, double areaPool, int numberOfFloors, CaseStudyModule2JavaCore.Modes.TypeVilla typeVilla
+1,1,1.0,1.0,1,1,1
+2,2,2.0,2.0,2,2,2

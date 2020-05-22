@@ -15,7 +15,7 @@ public class Villa extends Services {
 
     }
 
-    public Villa(String id, String nameService, double arenaUse, double rentalCosts, int maxPeople, String typeRent, String roomStandard, String convenientDescription, double areaPool, int numberOfFloors, CaseStudyModule2JavaCore.Modes.TypeVilla typeVilla) {
+    public Villa(String id, String nameService, double arenaUse, double rentalCosts, int maxPeople, String typeRent, String roomStandard, String convenientDescription, double areaPool, int numberOfFloors, TypeVilla typeVilla) {
         super(id, nameService, arenaUse, rentalCosts, maxPeople, typeRent);
         this.roomStandard = roomStandard;
         this.convenientDescription = convenientDescription;
@@ -56,12 +56,18 @@ public class Villa extends Services {
         this.numberOfFloors = numberOfFloors;
     }
 
-    public CaseStudyModule2JavaCore.Modes.TypeVilla getTypeVilla() {
-        return TypeVilla;
+    public String getTypeVilla() {
+        if (TypeVilla.equals(TypeVilla.GOOD)){
+            return "GOOD";
+        } else return "NORMAL";
     }
 
-    public void setTypeVilla(CaseStudyModule2JavaCore.Modes.TypeVilla typeVilla) {
-        TypeVilla = typeVilla;
+    public void setTypeVilla(String typeVilla) {
+        if (typeVilla.equals("GOOD")){
+            this.TypeVilla = TypeVilla.GOOD;
+        } else {
+            this.TypeVilla = TypeVilla.NORMAl;
+        }
     }
 
     @Override
@@ -76,9 +82,9 @@ public class Villa extends Services {
     @Override
     public String toString() {
         return "Villa{" +
-                "roomStandard='" + roomStandard + '\'' +
+                "areaPool " + areaPool +
+                ", roomStandard = '" + roomStandard + '\'' +
                 ", convenientDescription='" + convenientDescription + '\'' +
-                ", areaPool=" + areaPool +
                 ", numberOfFloors=" + numberOfFloors +
                 ", TypeVilla=" + TypeVilla +
                 '}';

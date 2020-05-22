@@ -31,7 +31,8 @@ public class MainController {
                 addNewServices();
                 displayMainMenu();
                 break;
-            case 2:
+            case 2: showServices();
+                displayMainMenu();
                 break;
             case 7:
                 System.exit(0);
@@ -42,6 +43,54 @@ public class MainController {
 
 
     }
+
+    public static void showServices(){
+        System.out.println("Pls input List you want show");
+        System.out.println("-----------------------------");
+        System.out.println("1. Show all Villa");
+        System.out.println("2. Show all House");
+        System.out.println("3. Show all Room");
+        System.out.println("4. Show All Name Villa Not Duplicate");
+        System.out.println("5. Show All Name House Not Duplicate");
+        System.out.println("6. Show All Name Name Not Duplicate");
+        System.out.println("7. Back to menu");
+        System.out.println("8. Exit");
+        System.out.println("-----------");
+        int inputShowService = Integer.parseInt(scanner.nextLine());
+
+        switch (inputShowService){
+            case 1:
+                Add_new_services.checkinput(1);
+                Add_new_services new_services = new Add_new_services();
+                new_services.showInfomationService();
+                break;
+            case 2:
+                Add_new_services.checkinput(2);
+                break;
+            case 3:
+                Add_new_services.checkinput(3);
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                displayMainMenu();
+                break;
+            case 8:
+                System.exit(0);
+            default:
+                System.out.println("Fail!, PLS enter again ...");
+                scanner.nextLine();
+                showServices();
+
+
+        }
+
+    }
+
 
     public static void addNewServices(){
         System.out.println("Pls input ur service you want add:");
@@ -100,14 +149,28 @@ public class MainController {
         int length = Integer.parseInt(scanner.nextLine());
         for (int i=0; i<length;i ++){
             Villa villa = new Villa();
-            System.out.println("Enter areaPool  double");
-            villa.setAreaPool(Double.parseDouble(scanner.nextLine()));
-            System.out.println("Enter room Standard  String");
+            System.out.println("Enter id StringType");
+            villa.setId(scanner.nextLine());
+            System.out.println("Enter nameService StringType");
+            villa.setNameServices(scanner.nextLine());
+            System.out.println("Enter areaUse DoubleType");
+            villa.setArenaUse(Double.parseDouble(scanner.nextLine()));
+            System.out.println("Enter rentalCosts DoubleType");
+            villa.setRentalCosts(Double.parseDouble(scanner.nextLine()));
+            System.out.println("Enter maxPeople intType");
+            villa.setMaxPeople(Integer.parseInt(scanner.nextLine()));
+            System.out.println("Enter typeRent  StringType");
+            villa.setTypeRent(scanner.nextLine());
+            System.out.println("Enter roomStandard StringType");
             villa.setRoomStandard(scanner.nextLine());
             System.out.println("Enter convenientDescription String ");
             villa.setConvenientDescription(scanner.nextLine());
-            System.out.println("Enter number of Floors  int");
+            System.out.println("Enter areaPool  double");
+            villa.setAreaPool(Double.parseDouble(scanner.nextLine()));
+            System.out.println("Enter number Of Floors int");
             villa.setNumberOfFloors(Integer.parseInt(scanner.nextLine()));
+            System.out.println("Enter type Villa GOOD or NORMAL");
+            villa.setTypeVilla(scanner.nextLine());
             ListVilla.add(villa);
         }
         Add_new_services.WriteVillaToCSV(ListVilla);
@@ -128,12 +191,27 @@ public class MainController {
         int length = Integer.parseInt(scanner.nextLine());
         for (int i=0; i<length;i ++){
             House house = new House();
-            System.out.println("Enter type House   GOOD or NORMAL only ");
+            System.out.println("Enter id StringType");
+            house.setId(scanner.nextLine());
+            System.out.println("Enter nameService StringType");
+            house.setNameServices(scanner.nextLine());
+            System.out.println("Enter areaUse DoubleType");
+            house.setArenaUse(Double.parseDouble(scanner.nextLine()));
+            System.out.println("Enter rentalCosts DoubleType");
+            house.setRentalCosts(Double.parseDouble(scanner.nextLine()));
+            System.out.println("Enter maxPeople intType");
+            house.setMaxPeople(Integer.parseInt(scanner.nextLine()));
+            System.out.println("Enter typeRent  StringType");
+            house.setTypeRent(scanner.nextLine());
+            System.out.println("Enter type House GOOD or NORMAL only");
             house.setTypeHousee(scanner.nextLine());
             System.out.println("Enter convenientDescription String ");
             house.setConvenientDescription(scanner.nextLine());
-            System.out.println("Enter number of Floors  int");
+            System.out.println("Enter number Of Floors int");
             house.setNumberOfFloors(Integer.parseInt(scanner.nextLine()));
+            System.out.println("Enter address house String");
+            house.setAddress_house(scanner.nextLine());
+
             ListHouse.add(house);
         }
         Add_new_services.WriteHouseToCSV(ListHouse);
@@ -145,10 +223,21 @@ public class MainController {
         int length = Integer.parseInt(scanner.nextLine());
         for (int i=0; i<length;i ++){
             Room room = new Room();
-            System.out.println("Enter number of Room you can use  type int");
+            System.out.println("Enter id StringType");
+            room.setId(scanner.nextLine());
+            System.out.println("Enter nameService StringType");
+            room.setNameServices(scanner.nextLine());
+            System.out.println("Enter areaUse DoubleType");
+            room.setArenaUse(Double.parseDouble(scanner.nextLine()));
+            System.out.println("Enter rentalCosts DoubleType");
+            room.setRentalCosts(Double.parseDouble(scanner.nextLine()));
+            System.out.println("Enter maxPeople intType");
+            room.setMaxPeople(Integer.parseInt(scanner.nextLine()));
+            System.out.println("Enter typeRent StringType");
+            room.setTypeRent(scanner.nextLine());
+            System.out.println("Enter number of Room");
             room.setNumberOfRoom(Integer.parseInt(scanner.nextLine()));
-            System.out.println("Enter arena use  type Double");
-            room.setArena_use(Double.parseDouble(scanner.nextLine()));
+
             ListRoom.add(room);
         }
         Add_new_services.WriteRoomToCSV(ListRoom);

@@ -1,52 +1,73 @@
 package CaseStudyModule2JavaCore.Controller;
-import CaseStudyModule2JavaCore.Modes.House;
-import CaseStudyModule2JavaCore.Modes.Room;
-import CaseStudyModule2JavaCore.Modes.TypeVilla;
-import CaseStudyModule2JavaCore.Modes.Villa;
+import CaseStudyModule2JavaCore.Modes.*;
+import java_advandceObjOriented.ColorAble.Colorable;
 
 
 import java.io.*;
 import java.util.*;
-public class Add_new_services {
+public class Add_new_services<T> {
     public static Scanner scanner = new Scanner(System.in);
     private static final String filenameVilla = "src/CaseStudyModule2JavaCore/Data/Villa.csv";
     private static final String filenameHouse = "src/CaseStudyModule2JavaCore/Data/House.csv";
     private static final String filenameRoom = "src/CaseStudyModule2JavaCore/Data/Room.csv";
     private static final String COMMA_DELIMITER = ",";
-    private static final String NEW_LINE_SEPARATOR = "\n\n";
-    private static final String HEADER = " HEADER";
+    private static final String NEW_LINE_SEPARATOR = "\n";
+    private static final String HEADER = "String id, String nameService, double arenaUse, double rentalCosts, int maxPeople, String typeRent, String roomStandard, String convenientDescription, double areaPool, int numberOfFloors, CaseStudyModule2JavaCore.Modes.TypeVilla typeVilla\n";
 
-//    private String root_links;
-//    public String checkinput(int number){
-//        switch (number){
-//            case 1:
-//                root_links = filenameVilla;
-//                break;
-//            case 2:
-//                root_links = filenameHouse;
-//                break;
-//            case 3:
-//                root_links = filenameRoom;
-//                break;
-//            default:
-//                System.out.println("dont know root link of file csv ");
-//        }
-//        return root_links;
-//    }
+    private static String root_links;
+    public static String checkinput(int number){
+        switch (number){
+            case 1:
+                root_links = filenameVilla;
+                break;
+            case 2:
+                root_links = filenameHouse;
+                break;
+            case 3:
+                root_links = filenameRoom;
+                break;
+            default:
+                System.out.println("Don`t know root link of file csv ");
+        }
+        return root_links;
+    }
 
 
     public static void WriteVillaToCSV(ArrayList<Villa>  ListVilla){
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(filenameVilla,true);
-            fileWriter.append(HEADER);
-            fileWriter.append(NEW_LINE_SEPARATOR);
+            //fileWriter.append(HEADER);
+//            fileWriter.append(NEW_LINE_SEPARATOR);
             for (Villa villa: ListVilla){
-                fileWriter.append(villa.toString());
+                fileWriter.append(villa.getId());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(villa.getNameServices());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(villa.getArena_use()));
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(villa.getRentalCosts()));
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(villa.getMaxPeople()));
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(villa.getTypeRent());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(villa.getRoomStandard());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(villa.getConvenientDescription());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(villa.getAreaPool()));
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(villa.getNumberOfFloors()));
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(villa.getTypeVilla());
+
+
+
                 fileWriter.append(NEW_LINE_SEPARATOR);
             }
 
-            System.out.println("Add villa compelete\n");
+            System.out.println("Add villa Completed\n");
         } catch (Exception ex){
             System.out.println("Error, in FileWriter, file not found!!!");
         } finally {
@@ -58,54 +79,7 @@ public class Add_new_services {
             }
         }
     }
-    public static void removeCacheVilla(){
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter(filenameVilla);
-            System.out.println("Remove villa compelete\n");
-        } catch (Exception ex){
-            System.out.println("Error, in FileWriter, file not found!!!");
-        } finally {
-            try {
-                fileWriter.flush();
-                fileWriter.close();
-            } catch (Exception ex){
-                System.out.println("ERROR when flush or close,villa");
-            }
-        }
-    }
-    public static void removeCacheHouse(){
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter(filenameHouse);
-            System.out.println("Remove House compelete\n");
-        } catch (Exception ex){
-            System.out.println("Error, in FileWriter, file not found!!!");
-        } finally {
-            try {
-                fileWriter.flush();
-                fileWriter.close();
-            } catch (Exception ex){
-                System.out.println("ERROR when flush or close,House");
-            }
-        }
-    }
-    public static void removeCacheRoom(){
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter(filenameRoom);
-            System.out.println("Remove Room compelete\n");
-        } catch (Exception ex){
-            System.out.println("Error, in FileWriter, file not found!!!");
-        } finally {
-            try {
-                fileWriter.flush();
-                fileWriter.close();
-            } catch (Exception ex){
-                System.out.println("ERROR when flush or close,Room");
-            }
-        }
-    }
+
 
     public static void WriteHouseToCSV(ArrayList<House>  ListHouse){
 //        new FileWriter("src/CaseStudyModule2JavaCore/Data/Villa.csv", true);
@@ -113,13 +87,34 @@ public class Add_new_services {
         try {
             fileWriter = new FileWriter(filenameHouse,true);
             fileWriter.append(HEADER);
-            fileWriter.append(NEW_LINE_SEPARATOR);
+            //fileWriter.append(NEW_LINE_SEPARATOR);
             for (House house: ListHouse){
-                fileWriter.append(house.toString());
+                fileWriter.append(house.getId());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(house.getNameServices());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(house.getArena_use()));
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(house.getRentalCosts()));
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(house.getMaxPeople()));
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(house.getTypeRent());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(house.getTypeHousee());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(house.getConvenientDescription());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(house.getNumberOfFloors()));
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(house.getAddress_house());
+//                fileWriter.append(COMMA_DELIMITER);
+
                 fileWriter.append(NEW_LINE_SEPARATOR);
+
             }
 
-            System.out.println("Add house compele0te\n");
+            System.out.println("Add house completed\n");
         } catch (Exception ex){
             System.out.println("Error, in FileWriter, file not found!!!");
         } finally {
@@ -139,11 +134,27 @@ public class Add_new_services {
             fileWriter.append(HEADER);
             fileWriter.append(NEW_LINE_SEPARATOR);
             for (Room room: ListRoom){
-                fileWriter.append(room.toString());
+                fileWriter.append(room.getId());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(room.getNameServices());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(room.getArena_use()));
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(room.getRentalCosts()));
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(room.getMaxPeople()));
+                fileWriter.append((COMMA_DELIMITER));
+                fileWriter.append(room.getTypeRent());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(room.getNumberOfRoom()));
+
+
+
+
                 fileWriter.append(NEW_LINE_SEPARATOR);
             }
 
-            System.out.println("Add room Compelete\n");
+            System.out.println("Add room Completed\n");
         } catch (Exception ex){
             System.out.println("Error, in FileWriter, file not found!!!");
         } finally {
@@ -155,17 +166,120 @@ public class Add_new_services {
             }
         }
     }
+    public static void removeCacheVilla(){
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(filenameVilla);
+            fileWriter.append(HEADER);
+            System.out.println("Remove villa Completed\n");
+        } catch (Exception ex){
+            System.out.println("Error, in FileWriter, file not found!!!");
+        } finally {
+            try {
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (Exception ex){
+                System.out.println("ERROR when flush or close,villa");
+            }
+        }
+    }
+    public static void removeCacheHouse(){
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(filenameHouse);
+            System.out.println("Remove House Completed\n");
+        } catch (Exception ex){
+            System.out.println("Error, in FileWriter, file not found!!!");
+        } finally {
+            try {
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (Exception ex){
+                System.out.println("ERROR when flush or close,House");
+            }
+        }
+    }
+    public static void removeCacheRoom(){
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(filenameRoom);
+            System.out.println("Remove Room Completed\n");
+        } catch (Exception ex){
+            System.out.println("Error, in FileWriter, file not found!!!");
+        } finally {
+            try {
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (Exception ex){
+                System.out.println("ERROR when flush or close,Room");
+            }
+        }
+    }
 
 
-    public static void main(String[] args) {
-        ArrayList<Villa> ListVilla = new ArrayList<Villa>();
-        Villa villa1 = new Villa();
-        ListVilla.add(villa1);
-        Villa villa2 = new Villa("13","haha", 12,12,1,"ds","hsfhs","metmoi",12,12, TypeVilla.GOOD);
+    public ArrayList<Villa> getFileCSVtoList(){
+        BufferedReader br = null;
+        ArrayList<Villa> VillaList = new ArrayList<Villa>();
+        try {
+            String line;
+            br = new BufferedReader(new FileReader(filenameVilla));
 
-        ListVilla.add(villa2);
-        WriteVillaToCSV(ListVilla);
+            while ((line = br.readLine()) != null){
+                String[] splitData = line.split(",");
+//                System.out.println("gia tri cua split data 0" + splitData[0]);
+                if (splitData[0].equals("String id")){
+                    continue;
+                }
+                Villa villa = new Villa();
+                villa.setId(splitData[0]);
+                villa.setNameServices(splitData[1]);
+                villa.setArenaUse(Double.parseDouble(splitData[2]));
+                villa.setRentalCosts(Double.parseDouble(splitData[3]));
+                villa.setMaxPeople(Integer.parseInt(splitData[4]));
+                villa.setTypeRent(splitData[5]);
+                villa.setRoomStandard(splitData[6]);
+                villa.setConvenientDescription(splitData[7]);
+                villa.setAreaPool(Double.parseDouble(splitData[8]));
+                villa.setNumberOfFloors(Integer.parseInt(splitData[9]));
+                villa.setTypeVilla(splitData[10]);
 
+                VillaList.add(villa);
+            }
+            System.out.println("done ");
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                br.close();
+            } catch (Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
+        return VillaList;
+
+    }
+    ArrayList<Villa> ListVillaCsv  = getFileCSVtoList();
+//    ArrayList<House>  ListHouse = getFileCSVtoList();
+//    ArrayList<Room> ListRoom  = getFileCSVtoList();
+    public void showInfomationService() {
+
+         for (Villa villa: ListVillaCsv){
+             System.out.println("---------------------------\n");
+             System.out.println("String id = " + villa.getId() +
+                                ", NameService" + villa.getNameServices() +
+                                ", areaUse "+ villa.getArena_use()+
+                                ", RentalCosts " + villa.getRentalCosts()+
+                                ", Max people " + villa.getMaxPeople() +
+                                ", Type rent " + villa.getTypeRent() +
+                                ", RoomStandard " + villa.getRoomStandard()+
+                                ", ConvenientDescription " + villa.getConvenientDescription()+
+                                ", AreaPool " + villa.getAreaPool() +
+                                ", Number Of Floor " + villa.getNumberOfFloors() +
+                                ", Type Villa " + villa.getTypeVilla());
+             System.out.println("----------------------");
+        }
     }
 
 }

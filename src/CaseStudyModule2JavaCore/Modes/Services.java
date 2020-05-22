@@ -45,24 +45,12 @@ public abstract class Services {
         return arenaUse;
     }
 
-    public void setArena_use(double arena_use) {
-        this.arenaUse = arena_use;
-    }
-
     public double getCostOfUse() {
         return costOfUse;
     }
 
     public void setCostOfUse(double costOfUse) {
         this.costOfUse = costOfUse;
-    }
-
-    public int getMax_people() {
-        return maxPeople;
-    }
-
-    public void setMax_people(short max_people) {
-        this.maxPeople = max_people;
     }
 
     public double getTypeUse() {
@@ -73,7 +61,37 @@ public abstract class Services {
         this.typeUse = typeUse;
     }
 
+    public double getArenaUse() {
+        return arenaUse;
+    }
 
+    public void setArenaUse(double arenaUse) {
+        this.arenaUse = arenaUse;
+    }
+
+    public int getMaxPeople() {
+        return maxPeople;
+    }
+
+    public void setMaxPeople(int maxPeople) {
+        this.maxPeople = maxPeople;
+    }
+
+    public double getRentalCosts() {
+        return rentalCosts;
+    }
+
+    public void setRentalCosts(double rentalCosts) {
+        this.rentalCosts = rentalCosts;
+    }
+
+    public String getTypeRent() {
+        return typeRent;
+    }
+
+    public void setTypeRent(String typeRent) {
+        this.typeRent = typeRent;
+    }
 
     public abstract void showInfo();
 

@@ -24,8 +24,10 @@ public class House extends Services {
         this.address_house = address_house;
     }
 
-    public TypeHouse getTypeHousee() {
-        return typeHousee;
+    public String getTypeHousee() {
+        if ( typeHousee == TypeHouse.GOOD){
+            return "GOOD";
+        } else return "NORMAL";
     }
 
     public void setTypeHousee(String typeHousee) {
@@ -74,8 +76,8 @@ public class House extends Services {
     @Override
     public String toString() {
         return "House{" +
-                "typeHousee=" + typeHousee +
-                ", convenientDescription='" + convenientDescription + '\'' +
+                "typeHouse= " + typeHousee +
+                ", ConvenientDescription='" + convenientDescription + '\'' +
                 ", numberOfFloors=" + numberOfFloors +
                 ", address_house='" + address_house + '\'' +
                 '}';

@@ -1,13 +1,18 @@
 package CaseStudyModule2JavaCore.Controller;
 
 
+import CaseStudyModule2JavaCore.Exception.EmailException;
+import CaseStudyModule2JavaCore.Modes.Customer;
 import CaseStudyModule2JavaCore.Modes.House;
 import CaseStudyModule2JavaCore.Modes.Room;
 import CaseStudyModule2JavaCore.Modes.Villa;
+import CaseStudyModule2JavaCore.Validation.Validation;
+import CaseStudyModule2JavaCore.Exception.*;
 
+import javax.management.MBeanAttributeInfo;
+import javax.swing.*;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class MainController {
@@ -31,9 +36,18 @@ public class MainController {
                 addNewServices();
                 displayMainMenu();
                 break;
-            case 2: showServices();
+            case 2:
+                showServices();
                 displayMainMenu();
                 break;
+            case 3:
+                menuWriteCustomer();
+                displayMainMenu();
+                break;
+            case 4:
+                AddNewCustomer customer = new AddNewCustomer();
+                customer.showInformationCustomers(customer.compareCustomer());
+                displayMainMenu();
             case 7:
                 System.exit(0);
             default:
@@ -57,7 +71,7 @@ public class MainController {
         System.out.println("8. Exit");
         System.out.println("-----------");
         int inputShowService = Integer.parseInt(scanner.nextLine());
-        Add_new_services new_services = new Add_new_services();
+        AddNewServices new_services = new AddNewServices();
         switch (inputShowService){
             case 1:
 
@@ -143,45 +157,59 @@ public class MainController {
     };
 
     private static void addNewVilla(){
+//        String ID_PATTERN = "^SVVL-[0-9]{4}$";
+//        String NAME_PATTERN = "^[A-Z]+[a-z]+$";
+//        String AREA_PATTERN= "^([3-9]\\d)(\\.\\d+)?$|^([1-9][0-9]{2,})(\\.\\d+)?$";
+//        String PRICE_PATTERN = "^\\d+$";
+//        String MAXIMUM_PATTERN = "^[01][1-9]|10$";
+//        String NUMFLOOR_PATTERN = "^\\d{1,10}";
+//        String TYPERENT_PATTERN = "year|month|day";
+//        String STANDARD_PATTERN = "vip|normal";
+
+//        boolean Check = true;
+
+
+//        String FREESERVICE_PATTERN= "karaoke|massage|food|drink|car";
         ArrayList<Villa> ListVilla = new ArrayList<Villa>();
         System.out.println("Enter number of villa  element you want input");
         int length = Integer.parseInt(scanner.nextLine());
         for (int i=0; i<length;i ++){
             Villa villa = new Villa();
+
             System.out.println("Enter id StringType");
-            villa.setId(scanner.nextLine());
+            villa.setId(Validation.inputAndCheckID());
             System.out.println("Enter nameService StringType");
             villa.setNameServices(scanner.nextLine());
             System.out.println("Enter areaUse DoubleType");
             villa.setArenaUse(Double.parseDouble(scanner.nextLine()));
             System.out.println("Enter rentalCosts DoubleType");
-            villa.setRentalCosts(Double.parseDouble(scanner.nextLine()));
+            villa.setRentalCosts(Validation.inputAndCheckValidationRentalCosts());
             System.out.println("Enter maxPeople intType");
-            villa.setMaxPeople(Integer.parseInt(scanner.nextLine()));
+            villa.setMaxPeople(Validation.inputAndCheckValidationMaxNumberOfPeople());
             System.out.println("Enter typeRent  StringType");
             villa.setTypeRent(scanner.nextLine());
             System.out.println("Enter roomStandard StringType");
-            villa.setRoomStandard(scanner.nextLine());
+            villa.setRoomStandard(Validation.inputAndCheckValidationTypeRentOrRoomStandard());
             System.out.println("Enter convenientDescription String ");
             villa.setConvenientDescription(scanner.nextLine());
             System.out.println("Enter areaPool  double");
-            villa.setAreaPool(Double.parseDouble(scanner.nextLine()));
+            villa.setAreaPool(Validation.inputAndCheckValidationAreaUseOrAreaPool());
             System.out.println("Enter number Of Floors int");
-            villa.setNumberOfFloors(Integer.parseInt(scanner.nextLine()));
+            villa.setNumberOfFloors(Validation.inputAndCheckValidationNumberOfFloors());
             System.out.println("Enter type Villa GOOD or NORMAL");
             villa.setTypeVilla(scanner.nextLine());
             ListVilla.add(villa);
         }
-        Add_new_services.WriteVillaToCSV(ListVilla);
+        AddNewServices.WriteVillaToCSV(ListVilla);
     }
     private static void removeCacheVilla(){
-        Add_new_services.removeCacheVilla();
+        AddNewServices.removeCacheVilla();
     }
     private  static void removeCacheHouse(){
-        Add_new_services.removeCacheHouse();
+        AddNewServices.removeCacheHouse();
     }
     private static void removeCacheRoom(){
-        Add_new_services.removeCacheRoom();
+        AddNewServices.removeCacheRoom();
     }
 
     private static void addNewHouse(){
@@ -213,7 +241,7 @@ public class MainController {
 
             ListHouse.add(house);
         }
-        Add_new_services.WriteHouseToCSV(ListHouse);
+        AddNewServices.WriteHouseToCSV(ListHouse);
 
     }
     private static void addNewRoom(){
@@ -239,9 +267,94 @@ public class MainController {
 
             ListRoom.add(room);
         }
-        Add_new_services.WriteRoomToCSV(ListRoom);
+        AddNewServices.WriteRoomToCSV(ListRoom);
     }
+    public static void menuWriteCustomer(){
+        System.out.println("This is menu Append customer, pls choice ");
+        System.out.println("1. Append new customer ");
+        System.out.println("2. Clear list customer ");
+        int choice = Integer.parseInt(scanner.nextLine());
+        switch (choice){
+            case 1:
+                AddNewCustomer.WriteCustomerToCSV(WriteCustomer());
+                break;
+            case 2:
+                AddNewCustomer.RemoveCacheCustomer();
+                break;
+            default:
+                System.out.println("Input wrong, choice again");
+                menuWriteCustomer();
+        }
+    }
+    public static ArrayList<Customer> WriteCustomer(){
 
+
+        Customer customer = new Customer();
+
+
+        do {
+            try {
+                System.out.println("Nhap ID Card ");
+                customer.setIdCard(IdCardException.idCardException(scanner.nextLine()));
+                break;
+            } catch (IdCardException e){
+                System.out.println(e.getMessage());
+            }
+        } while (true);
+
+
+        System.out.println("Nhap vao Ho va ten");
+        customer.setHoVaTen(Validation.inputAndCheckValidationName());
+
+        do {try {
+                System.out.println("Nhap vao ngay thang nam sinh");
+                customer.setNgaySinh(BirthdayException.birthdayException(scanner.nextLine()));
+                break;
+            } catch (BirthdayException e) {
+                System.out.println(e.getMessage());
+            }
+        } while (true);
+
+
+
+//        customer.setGioiTinh(scanner.nextLine());
+        do {
+            try {
+                System.out.println("Nhap vao gioiTinh");
+                customer.setGioiTinh(GenderException.genderException(scanner.nextLine()));
+                break;
+            } catch (GenderException e){
+                System.out.println(e.getMessage());
+            }
+        } while (true);
+
+
+        System.out.println("Nhap vao CMND");
+        customer.setCMND(Long.parseLong(scanner.nextLine()));
+        System.out.println("Nhap vao SDT");
+        customer.setSDT(Long.parseLong(scanner.nextLine()));
+
+
+        do {
+            try {
+                System.out.println("Nhap vao Email");
+                customer.setEmail(EmailException.emailException(scanner.nextLine()));
+                break;
+            } catch (EmailException e){
+                System.out.println(e.getMessage());
+            }
+        } while (true);
+
+
+        System.out.println("Nhap vao loai khach hang");
+        customer.setLoaiKhach(scanner.nextLine());
+        System.out.println("Nhap vao dia chi khach hang");
+        customer.setDiaChi(scanner.nextLine());
+
+        ArrayList<Customer> ListCustomer= new ArrayList<>();
+        ListCustomer.add(customer);
+        return ListCustomer;
+    }
 
 
 

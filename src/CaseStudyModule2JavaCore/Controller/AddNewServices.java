@@ -5,7 +5,7 @@ import java_advandceObjOriented.ColorAble.Colorable;
 
 import java.io.*;
 import java.util.*;
-public class Add_new_services<T> {
+public class AddNewServices<T> {
     public static Scanner scanner = new Scanner(System.in);
     private static final String filenameVilla = "src/CaseStudyModule2JavaCore/Data/Villa.csv";
     private static final String filenameHouse = "src/CaseStudyModule2JavaCore/Data/House.csv";

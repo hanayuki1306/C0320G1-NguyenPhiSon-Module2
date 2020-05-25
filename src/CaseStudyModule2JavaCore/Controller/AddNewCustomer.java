@@ -118,6 +118,40 @@ public class AddNewCustomer {
         }
         return CustomerList;
     }
+
+    public String[] getListIdCard(){
+        int count = 0;
+        String[] ListID= new String[50];
+        BufferedReader br = null;
+        ArrayList<Customer> CustomerListID = new ArrayList<>();
+        try {
+            String line;
+            br = new BufferedReader(new FileReader(fileInfoCustomer));
+            while ((line = br.readLine()) != null){
+                String[] splitData = line.split(",");
+                if (splitData[0].equals("ID Card")) {
+                    continue;
+                }
+
+                Customer customer = new Customer();
+                customer.setIdCard(splitData[0]);
+                String elements = customer.getIdCard();
+                ListID[count] = elements;
+                count++;
+
+
+            }
+            System.out.println("completed get ID get id to list, ready to test");
+//            for (String id: ListID){
+//                System.out.println(id);
+//            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return ListID;
+    }
+
     public void showInformationCustomers(ArrayList<Customer> ListCustomer){
         compareCustomer();
 //        ArrayList<Customer> ListCustomer = getFileCSVCustomerToList();
@@ -156,4 +190,18 @@ public class AddNewCustomer {
         Collections.sort(CustomerList, new SortUseComparator());
         return  CustomerList;
     };
+
+    class SortByIdCard implements Comparator<Customer>{
+
+        @Override
+        public int compare(Customer customer, Customer customer1) {
+            return customer.getIdCard().compareTo(customer1.getIdCard());
+        }
+    }
+    public ArrayList<Customer> compareByIdCard(){
+        ArrayList<Customer> CustomerList = getFileCSVCustomerToList();
+        Collections.sort(CustomerList, new SortByIdCard());
+        return CustomerList;
+    }
+
 }

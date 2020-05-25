@@ -48,6 +48,10 @@ public class MainController {
                 AddNewCustomer customer = new AddNewCustomer();
                 customer.showInformationCustomers(customer.compareCustomer());
                 displayMainMenu();
+            case 5:
+                AddNewBooking newBooking = new AddNewBooking();
+                newBooking.ShowInfoCustomerSortByIdCard();
+                break;
             case 7:
                 System.exit(0);
             default:

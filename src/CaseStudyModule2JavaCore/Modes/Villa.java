@@ -7,7 +7,7 @@ public class Villa extends Services {
     private String convenientDescription;
     private double areaPool;
     private int numberOfFloors;
-//    String Address_Villa;
+
     TypeVilla TypeVilla;
 
 

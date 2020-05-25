@@ -171,19 +171,35 @@ public class MainController {
 //        String STANDARD_PATTERN = "vip|normal";
 
 //        boolean Check = true;
-
-
 //        String FREESERVICE_PATTERN= "karaoke|massage|food|drink|car";
+        AddNewServices services = new AddNewServices();
+        ArrayList<Villa> ListIdVilla = services.getFileCsvVillaToList();
+
+
         ArrayList<Villa> ListVilla = new ArrayList<Villa>();
         System.out.println("Enter number of villa  element you want input");
         int length = Integer.parseInt(scanner.nextLine());
         for (int i=0; i<length;i ++){
             Villa villa = new Villa();
 
-            System.out.println("Enter id StringType");
-            villa.setId(Validation.inputAndCheckID());
+
+            do {
+                System.out.println("Enter id StringType");
+                String input = scanner.nextLine();
+                for( Villa element: ListIdVilla){
+                    if (!element.getId().equals(input)){
+                        villa.setId(input);
+                        break;
+                    }
+                }
+                System.out.println("Đã có id trong list vui lòng nhập id khác");
+                break;
+
+            } while (true);
+
+
             System.out.println("Enter nameService StringType");
-            villa.setNameServices(scanner.nextLine());
+            villa.setNameServices(Validation.inputAndCheckValidationName());
             System.out.println("Enter areaUse DoubleType");
             villa.setArenaUse(Double.parseDouble(scanner.nextLine()));
             System.out.println("Enter rentalCosts DoubleType");

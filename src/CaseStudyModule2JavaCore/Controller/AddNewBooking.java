@@ -224,25 +224,38 @@ public class AddNewBooking {
     }
 
     public ArrayList<Customer> FakeList(){
+        ArrayList<Customer> ListBooking = new ArrayList<>();
         AddNewCustomer customer = new AddNewCustomer();
+//        System.out.println("pls choice id Card of Customer in list Customer ");
+//        String inputID = scanner.nextLine();
+//        ArrayList<Customer> customerList = customer.getFileCSVCustomerToList();
+
+
+//        for (Customer element: customerList){
+//            if(element.getIdCard().equals(inputID)) {
+//                System.out.println("Da tim duoc Id Card tuong ung");
+//
+//                ListBooking.add(element);
+//                return ListBooking;
+//            }
+//        }
+//        System.out.println("Khong tim duoc id trong list, vui long tim lai");
+//        return  ListBooking;
+    do {
         System.out.println("pls choice id Card of Customer in list Customer ");
         String inputID = scanner.nextLine();
         ArrayList<Customer> customerList = customer.getFileCSVCustomerToList();
-        ArrayList<Customer> ListBooking = new ArrayList<>();
-        Villa villa = new Villa();
-
-
         for (Customer element: customerList){
             if(element.getIdCard().equals(inputID)) {
                 System.out.println("Da tim duoc Id Card tuong ung");
-
-//                element.setServices(Villa);
                 ListBooking.add(element);
                 return ListBooking;
             }
         }
         System.out.println("Khong tim duoc id trong list, vui long tim lai");
-        return  ListBooking;
+    } while (true);
+
+
     };
     public void menuBookingService(){
         System.out.println("This is menu Booking Services");
@@ -260,7 +273,7 @@ public class AddNewBooking {
                 menuBookingService();
                 break;
             case 3:
-                menuBookingService();
+                BookingMenu();
             default:
                 System.out.println("Pls choice 1 -3");
                 menuBookingService();

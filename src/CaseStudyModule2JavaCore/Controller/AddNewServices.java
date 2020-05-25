@@ -246,7 +246,7 @@ public class AddNewServices<T> {
 
                 VillaList.add(villa);
             }
-            System.out.println("done Villa ....\n");
+//            System.out.println("done Villa ....\n");
 
 
         } catch (Exception e) {
@@ -281,7 +281,7 @@ public class AddNewServices<T> {
                                 ", AreaPool " + villa.getAreaPool() +
                                 ", Number Of Floor " + villa.getNumberOfFloors() +
                                 ", Type Villa " + villa.getTypeVilla());
-             System.out.println("----------------------");
+             System.out.println("\"---------------------------");
         }
     }
 
@@ -311,7 +311,7 @@ public class AddNewServices<T> {
 
                     HouseList.add(house);
                 }
-                System.out.println("done House ...\n ");
+//                System.out.println("done House ...\n ");
 
 
             } catch (Exception e) {
@@ -340,7 +340,7 @@ public class AddNewServices<T> {
                     ", ConvenientDescription " + house.getConvenientDescription()+
                     ", Number Of Floor " + house.getNumberOfFloors() +
                     ", Address House " + house.getAddress_house());
-            System.out.println("----------------------");
+            System.out.println("\"---------------------------");
         }
     }
 
@@ -368,7 +368,7 @@ public class AddNewServices<T> {
 
                 RoomList.add(room);
             }
-            System.out.println("done Room ... ");
+//            System.out.println("done Room ... ");
 
 
         } catch (Exception e) {
@@ -393,7 +393,7 @@ public class AddNewServices<T> {
                     ", Max people " + room.getMaxPeople() +
                     ", Type rent " + room.getTypeRent() +
                     ", NumberOfRoom " + room.getNumberOfRoom());
-            System.out.println("----------------------");
+            System.out.println("\"---------------------------");
         }
     }
 

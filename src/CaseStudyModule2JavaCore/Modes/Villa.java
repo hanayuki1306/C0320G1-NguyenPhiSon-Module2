@@ -1,8 +1,8 @@
 package CaseStudyModule2JavaCore.Modes;
 
-import org.w3c.dom.ls.LSOutput;
+import java.util.Objects;
 
-public class Villa extends Services {
+public class Villa extends Services implements Comparable<Villa>{
     private String roomStandard;
     private String convenientDescription;
     private double areaPool;
@@ -82,11 +82,40 @@ public class Villa extends Services {
     @Override
     public String toString() {
         return "Villa{" +
-                "areaPool " + areaPool +
-                ", roomStandard = '" + roomStandard + '\'' +
-                ", convenientDescription='" + convenientDescription + '\'' +
-                ", numberOfFloors=" + numberOfFloors +
+                "ID " + getId()+ '\'' +
                 ", TypeVilla=" + TypeVilla +
+                ", arenaUse=" + arenaUse +
+                "roomStandard='" + roomStandard + '\'' +
+                ", convenientDescription='" + convenientDescription + '\'' +
+                ", areaPool=" + areaPool +
+                ", numberOfFloors=" + numberOfFloors +
+                ", costOfUse=" + costOfUse +
+                ", maxPeople=" + maxPeople +
+                ", typeUse=" + typeUse +
+                ", rentalCosts=" + rentalCosts +
+                ", typeRent='" + typeRent + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Villa)) return false;
+        Villa villa = (Villa) o;
+        return Double.compare(villa.areaPool, areaPool) == 0 &&
+                numberOfFloors == villa.numberOfFloors &&
+                roomStandard.equals(villa.roomStandard) &&
+                convenientDescription.equals(villa.convenientDescription) &&
+                TypeVilla == villa.TypeVilla;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(roomStandard, convenientDescription, areaPool, numberOfFloors, TypeVilla);
+    }
+
+    @Override
+    public int compareTo(Villa o) {
+        return this.getNameServices().compareTo(o.getNameServices());
     }
 }

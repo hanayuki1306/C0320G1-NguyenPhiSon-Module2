@@ -18,6 +18,7 @@ import java.util.Scanner;
 public class MainController {
     public static Scanner scanner = new Scanner(System.in);
 
+
     public static void displayMainMenu(){
 
         System.out.println("This is client of Farama Resort, pls choice contact with this client by input number");
@@ -52,6 +53,9 @@ public class MainController {
                 AddNewBooking newBooking = new AddNewBooking();
                 newBooking.ShowInfoCustomerSortByIdCard();
                 break;
+            case 6: AddNewEmployee newEmployee = new AddNewEmployee();
+                newEmployee.menuShowEmployee();
+                break;
             case 7:
                 System.exit(0);
             default:
@@ -63,6 +67,7 @@ public class MainController {
     }
 
     public static void showServices(){
+        ShowServiceUseTreeSet showServiceUseTreeSet = new ShowServiceUseTreeSet();
         System.out.println("Pls input List you want show");
         System.out.println("-----------------------------");
         System.out.println("1. Show all Villa");
@@ -87,11 +92,14 @@ public class MainController {
             case 3:
                 new_services.showInfoServiceRoom();
                 break;
-            case 4:
+            case 4:showServiceUseTreeSet.ShowInfoVillaUseTreeSet();
+                displayMainMenu();
                 break;
-            case 5:
+            case 5:showServiceUseTreeSet.ShowInfoHouseUseTreeSet();
+                displayMainMenu();
                 break;
-            case 6:
+            case 6:showServiceUseTreeSet.ShowInfoRoomUseTreeSet();
+                displayMainMenu();
                 break;
             case 7:
                 displayMainMenu();

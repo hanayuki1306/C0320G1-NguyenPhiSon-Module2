@@ -241,6 +241,7 @@ public class AddNewBooking {
 //        }
 //        System.out.println("Khong tim duoc id trong list, vui long tim lai");
 //        return  ListBooking;
+
     do {
         System.out.println("pls choice id Card of Customer in list Customer ");
         String inputID = scanner.nextLine();

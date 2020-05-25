@@ -2,18 +2,14 @@ package CaseStudyModule2JavaCore.Modes;
 
 import CaseStudyModule2JavaCore.Modes.Services;
 
-public class Room extends Services {
+import java.util.Objects;
+
+public class Room extends Services implements Comparable<Room>{
     public Room(){
     };
 
-//    String AddressTower;
-    int numberOfRoom;
 
-//    public Room(int number_Room, double Arena_use) {
-////        this.AddressTower = AddressTower;
-//        this.numberOfRoom = number_Room;
-//        super.setArena_use(Arena_use);
-//    }
+    int numberOfRoom;
 
 
     public Room(String id, String nameService, double arenaUse, double rentalCosts, int maxPeople, String typeRent, int numberOfRoom){
@@ -41,13 +37,32 @@ public class Room extends Services {
     @Override
     public String toString() {
         return "Room{" +
-                "NumberOfRoom" + numberOfRoom +
-//                ", costOfUse=" + costOfUse +
-//                ", maxPeople=" + maxPeople +
-//                ", typeUse=" + typeUse +
-//                ", rentalCosts=" + rentalCosts +
-                "Area use = " + arenaUse +
-//                ", typeRent='" + typeRent + '\'' +
+                "Id" + getId() +
+                ", numberOfRoom=" + numberOfRoom +
+                ", arenaUse=" + arenaUse +
+                ", costOfUse=" + costOfUse +
+                ", maxPeople=" + maxPeople +
+                ", typeUse=" + typeUse +
+                ", rentalCosts=" + rentalCosts +
+                ", typeRent='" + typeRent + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Room)) return false;
+        Room room = (Room) o;
+        return numberOfRoom == room.numberOfRoom;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numberOfRoom);
+    }
+
+    @Override
+    public int compareTo(Room room) {
+        return this.getNameServices().compareTo(room.getNameServices());
     }
 }
